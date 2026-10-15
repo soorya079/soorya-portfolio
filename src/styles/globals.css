@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-bg text-text-primary font-sans;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-surface;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-surface-border rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-text-muted;
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    outline: 2px solid #00d4ff;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: rgba(0, 212, 255, 0.2);
+    color: #f0f0f5;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply section-inner;
+  }
+
+  .section-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .glow-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5), transparent);
+  }
+
+  .tech-tag {
+    @apply font-mono text-xs px-2 py-0.5 bg-surface-raised border border-surface-border text-text-secondary rounded;
+  }
+
+  .card {
+    @apply bg-surface border border-surface-border rounded-lg;
+  }
+
+  .card-raised {
+    @apply bg-surface-raised border border-surface-border rounded-lg;
+  }
+}
+
+section[id] {
+  padding-block: clamp(4rem, 7vw, 5rem);
+}
+
+@media (max-width: 640px) {
+  .section-inner {
+    padding-inline: 16px;
+  }
+}
+
+/* Boot sequence specific */
+.boot-char {
+  display: inline-block;
+  animation: bootFade 0.05s ease forwards;
+}
+
+@keyframes bootFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Reduced motion overrides */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Architecture flow lines */
+.arch-line {
+  stroke: rgba(0, 212, 255, 0.4);
+  stroke-width: 1.5;
+  stroke-dasharray: 8 4;
+  animation: dash 1.5s linear infinite;
+}
+
+@keyframes dash {
+  to { stroke-dashoffset: -48; }
+}
+
+/* Node map SVG */
+.node-connection {
+  transition: opacity 0.3s ease, stroke 0.3s ease;
+}
+
+/* Recruiter mode overlay */
+.recruiter-overlay {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}

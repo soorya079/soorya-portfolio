@@ -1,0 +1,48 @@
+export const incidents = [
+  {
+    id: 'ecs-task-stop',
+    title: 'ECS Task Stops Immediately After Start',
+    severity: 'HIGH',
+    project: 'CloudSentinel',
+    symptom: 'ECS Fargate task enters RUNNING state, then transitions to STOPPED within seconds. No visible error in console.',
+    investigation: [
+      'Checked ECS task events in the AWS console',
+      'Opened CloudWatch Logs for the ECS task log group',
+      'Read the container startup log output',
+      'Found Uvicorn could not bind to the expected port',
+    ],
+    rootCause: 'The Dockerfile CMD was starting Uvicorn on port 8000 but the ECS task definition port mapping referenced a different port. The application crashed on startup.',
+    fix: 'Aligned the port in the Dockerfile, the ECS task definition port mapping, and the security group inbound rule.',
+    lesson: 'Port consistency across Dockerfile → task definition → security group is critical. CloudWatch logs are the primary diagnostic tool for container failures.',
+  },
+  {
+    id: 'ecr-auth-fail',
+    title: 'Docker Push to ECR Authentication Failure',
+    severity: 'MEDIUM',
+    project: 'CloudSentinel',
+    symptom: 'docker push fails with "no basic auth credentials" or "denied: Your authorization token has expired".',
+    investigation: [
+      'Verified AWS CLI was configured with correct credentials',
+      'Re-ran ecr get-login-password command',
+      'Confirmed IAM user had ECR permissions',
+    ],
+    rootCause: 'ECR authentication tokens expire after 12 hours. The previous login token had expired.',
+    fix: 'Re-authenticated using: aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <account>.dkr.ecr.<region>.amazonaws.com',
+    lesson: 'ECR tokens are temporary. Automate re-authentication in CI/CD pipelines. Never use long-lived credentials.',
+  },
+  {
+    id: 'cors-apigateway',
+    title: 'API Gateway CORS Misconfiguration on React Dashboard Call',
+    severity: 'LOW',
+    project: 'LIFEGRID',
+    symptom: 'React dashboard receives "No \'Access-Control-Allow-Origin\' header is present on the requested resource" when invoking API Gateway endpoints.',
+    investigation: [
+      'Confirmed Lambda handler executed and returned status 200 in CloudWatch',
+      'Inspected API Gateway integration response and OPTIONS preflight method',
+      'Checked response headers in the Lambda proxy return object',
+    ],
+    rootCause: 'Lambda proxy integration requires CORS headers in the response payload (`Access-Control-Allow-Origin`), and API Gateway requires enabling CORS on OPTIONS methods.',
+    fix: 'Configured CORS headers in Lambda response payload and declared CORS origins in the AWS SAM template.',
+    lesson: 'For API Gateway Lambda proxy integrations, CORS headers must be returned by the Lambda function itself as well as declared in the SAM template.',
+  },
+];

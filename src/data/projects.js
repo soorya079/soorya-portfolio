@@ -1,0 +1,223 @@
+/**
+ * All verified projects.
+ * Priority tiers based on relevance to Junior Cloud Engineer role.
+ * TIER A = Cloud/Infrastructure, TIER B = Full Stack, TIER C = Python/Data
+ */
+export const projects = [
+  {
+    id: 'cloudsentinel',
+    title: 'CloudSentinel — AWS Cloud Deployment and Recovery Project',
+    shortTitle: 'CloudSentinel',
+    tier: 'A',
+    category: 'AWS Cloud / DevOps',
+    tagline: 'Containerized Python/FastAPI backend deployed on Amazon ECS Fargate with event-driven recovery and CloudWatch monitoring.',
+    description:
+      'Containerized a Python/FastAPI backend service using Docker and published the image to Amazon ECR. Deployed the containerized application using Amazon ECS Fargate. Configured AWS networking and security groups for application access. Used CloudWatch logs and AWS CLI to inspect deployment status and troubleshoot runtime issues. Designed an event-driven recovery and alerting workflow using EventBridge, Lambda, and SNS.',
+    bullets: [
+      'Containerized a Python/FastAPI backend service using Docker and published the image to Amazon ECR.',
+      'Deployed the containerized application using Amazon ECS Fargate, configuring networking and security groups for application access.',
+      'Used CloudWatch logs and AWS CLI to inspect deployment status and troubleshoot runtime issues.',
+      'Designed an event-driven recovery and alerting workflow using EventBridge, Lambda, and SNS.',
+    ],
+    technologies: [
+      'Python',
+      'FastAPI',
+      'Docker',
+      'Amazon ECR',
+      'Amazon ECS Fargate',
+      'Amazon CloudWatch',
+      'Amazon EventBridge',
+      'AWS Lambda',
+      'Amazon SNS',
+      'AWS CLI',
+    ],
+    github: 'https://github.com/soorya079/cloudsentinel',
+    liveDemo: null, // Set to URL only if verified
+    status: 'COMPLETED',
+    featured: true,
+    architecture: [
+      { id: 'local', label: 'LOCAL API', sublabel: 'Python / FastAPI / Uvicorn', color: '#00d4ff' },
+      { id: 'docker', label: 'DOCKER IMAGE', sublabel: 'Containerized App', color: '#2496ed' },
+      { id: 'ecr', label: 'AMAZON ECR', sublabel: 'Container Registry', color: '#ff9900' },
+      { id: 'ecs', label: 'ECS FARGATE', sublabel: 'Serverless Compute', color: '#ff9900' },
+      { id: 'eventbridge', label: 'EVENTBRIDGE + LAMBDA', sublabel: 'Automated Recovery', color: '#ff9900' },
+      { id: 'cloudwatch', label: 'CLOUDWATCH + SNS', sublabel: 'Logs & Alerts', color: '#10b981' },
+    ],
+    caseStudy: {
+      problem: 'Build, deploy, and monitor a containerized Python/FastAPI microservice on AWS without managing virtual machines, featuring automated failure recovery.',
+      steps: [
+        { id: '01', title: 'PROBLEM & OBJECTIVE', content: 'Design and deploy an enterprise-ready microservice workload on serverless AWS container infrastructure with automated alerting and recovery.' },
+        { id: '02', title: 'ARCHITECTURE DESIGN', content: 'Architected pipeline: Python FastAPI API → Docker container → Amazon ECR repository → ECS Fargate cluster → EventBridge & Lambda recovery workflow → CloudWatch logs and SNS alerting.' },
+        { id: '03', title: 'CONTAINERIZATION', content: 'Created an optimized Dockerfile packaging the FastAPI application and dependencies. Tested container execution and port bindings locally.' },
+        { id: '04', title: 'ECR REGISTRY', content: 'Configured private Amazon ECR repository. Authenticated via AWS CLI token retrieval and published tagged Docker container images.' },
+        { id: '05', title: 'ECS TASK DEFINITION', content: 'Authored ECS task definition setting container image URI, CPU/memory quotas, awsvpc networking mode, and awslogs logging driver.' },
+        { id: '06', title: 'ECS FARGATE DEPLOYMENT', content: 'Launched container service on Amazon ECS Fargate with custom VPC subnets and security group inbound/outbound rules.' },
+        { id: '07', title: 'EVENT-DRIVEN RECOVERY', content: 'Integrated Amazon EventBridge with AWS Lambda and Amazon SNS to detect task state transitions and trigger automated incident alerting and recovery.' },
+        { id: '08', title: 'CLOUDWATCH & AWS CLI', content: 'Inspected runtime logs in CloudWatch and diagnosed deployment events via AWS CLI commands to troubleshoot container startup and port mapping issues.' },
+        { id: '09', title: 'KEY TAKEAWAYS', content: 'Hands-on mastery of AWS container networking, IAM execution roles, security groups, and decoupled event-driven workflows.' },
+        { id: '10', title: 'VERIFIED SOURCE', content: 'Source code publicly available on GitHub: https://github.com/soorya079/cloudsentinel' },
+      ],
+    },
+    proofOfWork: ['Amazon ECS Fargate', 'Amazon ECR', 'Docker', 'Amazon CloudWatch', 'Amazon EventBridge', 'AWS Lambda', 'Amazon SNS', 'Python', 'FastAPI', 'AWS CLI'],
+  },
+  {
+    id: 'lifegrid',
+    title: 'LIFEGRID — Event-Driven Disaster Coordination Platform',
+    shortTitle: 'LIFEGRID',
+    tier: 'A',
+    category: 'AWS Serverless / Event-Driven',
+    tagline: 'Serverless disaster coordination platform using AWS Lambda, DynamoDB, and EventBridge for asynchronous risk assessment.',
+    description:
+      'Developed a serverless disaster coordination platform using AWS Lambda, API Gateway, and DynamoDB to manage simulated disaster reports and resource information. Implemented event-driven processing with Amazon EventBridge for asynchronous risk assessment and resource-shortage detection workflows. Designed idempotent event processing to prevent duplicate event handling and maintain consistent application state. Deployed backend infrastructure using AWS SAM and CloudFormation, with CloudWatch for logging and troubleshooting. Built a React dashboard to visualize disaster reports, risk assessments, and resource availability using simulated data.',
+    bullets: [
+      'Developed a serverless disaster coordination platform using AWS Lambda, API Gateway, and DynamoDB to manage simulated disaster reports and resource information.',
+      'Implemented event-driven processing with Amazon EventBridge for asynchronous risk assessment and resource-shortage detection workflows.',
+      'Designed idempotent event processing to prevent duplicate event handling and maintain consistent application state.',
+      'Deployed backend infrastructure using AWS SAM and CloudFormation, with CloudWatch for logging and troubleshooting.',
+      'Built a React dashboard to visualize disaster reports, risk assessments, and resource availability using simulated data.',
+    ],
+    technologies: [
+      'AWS Lambda',
+      'Amazon API Gateway',
+      'Amazon DynamoDB',
+      'Amazon EventBridge',
+      'Amazon CloudWatch',
+      'AWS IAM',
+      'AWS SAM',
+      'AWS CloudFormation',
+      'Python',
+      'FastAPI',
+      'React',
+    ],
+    github: 'https://github.com/soorya079/LIFEGRID',
+    liveDemo: null, // Set to URL only if verified
+    status: 'COMPLETED',
+    featured: true,
+    architecture: [
+      { id: 'react', label: 'REACT DASHBOARD', sublabel: 'Disaster Map & Resources', color: '#61dafb' },
+      { id: 'apigateway', label: 'API GATEWAY', sublabel: 'RESTful Endpoints', color: '#ff9900' },
+      { id: 'lambda', label: 'AWS LAMBDA', sublabel: 'Serverless Processing', color: '#ff9900' },
+      { id: 'dynamodb', label: 'AMAZON DYNAMODB', sublabel: 'Persistent NoSQL Store', color: '#3b82f6' },
+      { id: 'eventbridge', label: 'EVENTBRIDGE', sublabel: 'Asynchronous Event Bus', color: '#ff9900' },
+      { id: 'sam-cfn', label: 'AWS SAM / CFN', sublabel: 'Infrastructure as Code', color: '#10b981' },
+      { id: 'cloudwatch', label: 'CLOUDWATCH', sublabel: 'Logging & Monitoring', color: '#10b981' },
+    ],
+    proofOfWork: ['AWS Lambda', 'Amazon API Gateway', 'Amazon DynamoDB', 'Amazon EventBridge', 'AWS SAM', 'AWS CloudFormation', 'Amazon CloudWatch', 'AWS IAM', 'Python', 'React'],
+  },
+  {
+    id: 'cloudvault',
+    title: 'CloudVault',
+    tier: 'A',
+    category: 'Cloud / Serverless',
+    tagline: 'Serverless cloud file storage with authentication using AWS S3, Lambda, and Cognito.',
+    description:
+      'A cloud-based file storage system using a serverless architecture. Users authenticate via Amazon Cognito, interact through API Gateway, which triggers Lambda functions to store and retrieve files from Amazon S3.',
+    technologies: ['AWS S3', 'AWS Lambda', 'API Gateway', 'Amazon Cognito', 'Serverless', 'Cloud Storage'],
+    github: 'https://github.com/soorya079/CloudVault',
+    liveDemo: null,
+    status: 'IN DEVELOPMENT',
+    featured: false,
+    architecture: [
+      { id: 'user', label: 'USER', sublabel: 'Browser / Client', color: '#f0f0f5' },
+      { id: 'cognito', label: 'COGNITO', sublabel: 'Authentication', color: '#ff9900' },
+      { id: 'apigateway', label: 'API GATEWAY', sublabel: 'HTTP API', color: '#ff9900' },
+      { id: 'lambda', label: 'LAMBDA', sublabel: 'Serverless Functions', color: '#ff9900' },
+      { id: 's3', label: 'AMAZON S3', sublabel: 'Object Storage', color: '#10b981' },
+    ],
+    proofOfWork: ['Amazon S3', 'AWS Lambda', 'API Gateway', 'Amazon Cognito'],
+  },
+  {
+    id: 'welfarexplain',
+    title: 'WelfareXplain',
+    tier: 'B',
+    category: 'Full Stack / AI',
+    tagline: 'Explainable AI platform to help citizens discover government welfare schemes.',
+    description:
+      'A personal/student project that helps citizens discover and understand government welfare schemes, check eligibility, and access relevant information through an explainable AI-assisted interface.',
+    technologies: ['Python', 'Web Development', 'Backend/API', 'Database', 'Eligibility Logic'],
+    github: 'https://github.com/soorya079/WelfareXplain',
+    liveDemo: null,
+    status: 'IN DEVELOPMENT',
+    featured: false,
+    proofOfWork: ['Python', 'Web Development', 'API Design', 'Database'],
+  },
+  {
+    id: 'campus-connect',
+    title: 'Campus Connect',
+    tier: 'B',
+    category: 'Full Stack / MERN',
+    tagline: 'Full-stack campus platform with role-based access, lost & found, and book sharing.',
+    description:
+      'A MERN-stack application built for campus use. Features role-based authentication, lost-and-found reporting, problem/issue reporting, and a book-sharing system.',
+    technologies: ['MongoDB', 'Express', 'React', 'Node.js', 'Authentication', 'Role-Based Access'],
+    github: 'https://github.com/soorya079/campus-connect',
+    liveDemo: null,
+    status: 'IN DEVELOPMENT',
+    featured: false,
+    architecture: [
+      { id: 'frontend', label: 'REACT FRONTEND', sublabel: 'User Interface', color: '#61dafb' },
+      { id: 'api', label: 'EXPRESS API', sublabel: 'Backend / REST API', color: '#00d4ff' },
+      { id: 'db', label: 'MONGODB', sublabel: 'Database', color: '#10b981' },
+    ],
+    proofOfWork: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT Auth'],
+  },
+  {
+    id: 'datapipline',
+    title: 'DataPipline',
+    tier: 'C',
+    category: 'Python / Data Engineering',
+    tagline: 'ETL pipeline processing MovieLens and OMDb data into a SQLite analytics database.',
+    description:
+      'A Python-based ETL (Extract, Transform, Load) data pipeline that processes MovieLens and OMDb datasets, loads them into a SQLite database via SQLAlchemy, and enables SQL-based analytics.',
+    technologies: ['Python', 'ETL', 'SQLite', 'SQLAlchemy', 'Data Pipeline', 'MovieLens', 'OMDb'],
+    github: 'https://github.com/soorya079/Datapipline',
+    liveDemo: null,
+    status: 'NOT DEPLOYED',
+    featured: false,
+    architecture: [
+      { id: 'sources', label: 'DATA SOURCES', sublabel: 'MovieLens + OMDb', color: '#f59e0b' },
+      { id: 'extract', label: 'EXTRACT', sublabel: 'Raw Data Ingestion', color: '#00d4ff' },
+      { id: 'transform', label: 'TRANSFORM', sublabel: 'Clean + Enrich', color: '#7c3aed' },
+      { id: 'load', label: 'LOAD', sublabel: 'SQLAlchemy + SQLite', color: '#10b981' },
+      { id: 'analysis', label: 'ANALYSIS', sublabel: 'SQL Queries', color: '#f0f0f5' },
+    ],
+    proofOfWork: ['Python', 'ETL', 'SQLite', 'SQLAlchemy', 'Data Engineering'],
+  },
+  {
+    id: 'codepulse',
+    title: 'CodePulse',
+    tier: 'C',
+    category: 'Python / Code Quality',
+    tagline: 'Python code health analysis and predictive maintenance hotspot detection.',
+    description:
+      'A Python project for code quality analysis and predictive maintenance. Identifies code hotspots and provides analysis to help prioritize technical debt and maintenance effort.',
+    technologies: ['Python', 'Code Analysis', 'Code Quality', 'Static Analysis'],
+    github: 'https://github.com/soorya079/CodePulse',
+    liveDemo: null,
+    status: 'NOT DEPLOYED',
+    featured: false,
+    proofOfWork: ['Python', 'Code Analysis', 'Static Analysis'],
+  },
+  {
+    id: 'mindsync',
+    title: 'MindSync',
+    tier: 'C',
+    category: 'Python / Development',
+    tagline: 'Python project — see GitHub for full details.',
+    // TODO: Update description once repository contents are confirmed
+    description: 'A Python-based project available on GitHub. Update this description with verified details from the repository.',
+    technologies: ['Python'],
+    github: 'https://github.com/soorya079/MindSync',
+    liveDemo: null,
+    status: 'IN DEVELOPMENT',
+    featured: false,
+    proofOfWork: ['Python'],
+  },
+];
+
+export const featuredProjects = projects.filter((p) => p.featured);
+export const tierA = projects.filter((p) => p.tier === 'A');
+export const tierB = projects.filter((p) => p.tier === 'B');
+export const tierC = projects.filter((p) => p.tier === 'C');
+export const cloudSentinel = projects.find((p) => p.id === 'cloudsentinel');
+export const lifeGrid = projects.find((p) => p.id === 'lifegrid');

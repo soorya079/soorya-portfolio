@@ -1,0 +1,48 @@
+export const journal = [
+  {
+    id: 'first-cloud-deploy',
+    title: 'First Cloud Deployment: Getting CloudSentinel on ECS Fargate',
+    // TODO: Add actual date when verified
+    date: null,
+    tags: ['AWS', 'ECS', 'Docker', 'Deployment'],
+    problem: 'How do I run a containerized Python API on AWS without managing EC2 instances?',
+    whatIDid: 'Built a FastAPI application, containerized it with Docker, pushed the image to Amazon ECR, created an ECS task definition, and launched it as a Fargate service.',
+    whatILearned: 'ECS Fargate separates infrastructure management from deployment. The real complexity is in security groups, VPC configuration, and IAM roles — not the code itself.',
+  },
+  {
+    id: 'docker-ecr-push',
+    title: 'Authenticating Docker to Amazon ECR',
+    date: null,
+    tags: ['Docker', 'ECR', 'AWS CLI'],
+    problem: 'Docker push to ECR failed with authentication errors.',
+    whatIDid: 'Used `aws ecr get-login-password --region` piped into `docker login` with the ECR endpoint. Verified IAM permissions for ECR push.',
+    whatILearned: 'ECR authentication uses temporary tokens from AWS CLI, not permanent credentials. The IAM role must have ecr:GetAuthorizationToken and ecr:BatchCheckLayerAvailability permissions.',
+  },
+  {
+    id: 'cloudwatch-debugging',
+    title: 'Debugging ECS Tasks with CloudWatch Logs',
+    date: null,
+    tags: ['CloudWatch', 'ECS', 'Debugging'],
+    problem: 'ECS tasks were starting and immediately stopping with no visible error.',
+    whatIDid: 'Navigated to CloudWatch Log Groups for the ECS service. Found the container startup logs. Identified a port binding error in the Uvicorn configuration.',
+    whatILearned: 'When an ECS task fails silently, CloudWatch logs are the first place to look. Always configure awslogs driver in the task definition before deploying.',
+  },
+  {
+    id: 'security-groups',
+    title: 'Security Group Configuration for ECS Service',
+    date: null,
+    tags: ['Networking', 'Security Groups', 'ECS', 'AWS'],
+    problem: 'ECS service was running but the API was unreachable from outside.',
+    whatIDid: 'Reviewed the security group associated with the ECS service. Inbound rule was missing for the API port. Added an inbound rule for the relevant port range.',
+    whatILearned: 'Security groups are stateful firewalls in AWS. Missing inbound rules are the most common reason a running service is unreachable. Always verify security groups before debugging application code.',
+  },
+  {
+    id: 'lifegrid-eventbridge',
+    title: 'Idempotent Event Processing with EventBridge and DynamoDB',
+    date: null,
+    tags: ['EventBridge', 'Lambda', 'DynamoDB', 'Serverless'],
+    problem: 'Asynchronous event retries caused duplicate risk assessments and inconsistent state in DynamoDB.',
+    whatIDid: 'Implemented conditional writes and event transaction IDs in DynamoDB, and configured EventBridge dead-letter queues (DLQs) to capture failed event invocations.',
+    whatILearned: 'Distributed event-driven systems require idempotency designed at the database layer. Amazon EventBridge provides at-least-once delivery, so application logic must guarantee deduplication.',
+  },
+];
